@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_picking_operations_product_image" inherit_id="stock.report_picking">
+        <xpath expr="//table[2]/thead/tr/th" position="before">
+            <t t-if="o.show_sequence_number">
+                <th>Sr.No</th>
+            </t>
+        </xpath>
+        <xpath expr="//table[2]/thead/tr/th" position="after">
+            <t t-if="o.show_product_image">
+                <th>Image</th>
+            </t>
+        </xpath>
+        <xpath expr="//table[2]/tbody/tr/td" position="before">
+            <t t-if="o.show_sequence_number">
+                <td><span t-esc="move_index + 1"/></td>
+            </t>
+        </xpath>
+        <xpath expr="//table[2]/tbody/tr/td" position="after">
+            <t t-if="o.show_product_image">
+                <t t-if="o.product_image_size == 'small' or o.product_image_size == False">
+                    <td><span t-field="move.product_id.image_small" t-options='{"widget": "image"}'/></td>
+                </t>
+                <t t-if="o.product_image_size == 'medium'">
+                    <td><span t-field="move.product_id.image_medium" t-options='{"widget": "image"}'/></td>
+                </t>
+                <t t-if="o.product_image_size == 'large'">
+                    <td><span t-field="move.product_id.image" t-options='{"widget": "image"}'/></td>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>

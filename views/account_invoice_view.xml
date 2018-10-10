@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_invoice_product_image_configuration" model="ir.ui.view">
+        <field name="name">account.invoice.form.inherited</field>
+        <field name="model">account.invoice</field> 
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml"> 
+            <xpath expr="//notebook/page[2]" position="after">
+                <page string="Product Image Configuration">
+                    <group>
+                        <field name="show_sequence_number"/>
+                        <field name="show_product_image"/>
+                        <field name="product_image_size"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
